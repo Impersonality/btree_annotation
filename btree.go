@@ -160,7 +160,7 @@ func (s *items) insertAt(index int, item Item) {
 func (s *items) removeAt(index int) Item {
 	item := (*s)[index]
 	copy((*s)[index:], (*s)[index+1:])
-	(*s)[len(*s)-1] = nil
+	(*s)[len(*s)-1] = nil // 将items中的item设置为nil，真正的删除了item，即使有其他地方使用指针引用了item
 	*s = (*s)[:len(*s)-1]
 	return item
 }
